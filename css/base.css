@@ -1,0 +1,351 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+*, *:before, *:after {
+    box-sizing: content-box;
+}
+
+
+/*End reset*/
+
+body {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    position: relative;
+    color: white;
+    font-family: "Anonymous Pro", monospace;
+    font-weight: 700;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 48px;
+    padding: 16px 0;
+    z-index: 3;
+    opacity: 1;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: grey;
+    text-decoration: underline;
+}
+
+
+/*Sidebars*/
+
+#status {
+    position: absolute;
+    left: calc(50% - 432px - (4 * 48px));
+    text-align: right;
+}
+
+.help {
+    left: calc(50% + 416px);
+}
+
+section {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    position: absolute;
+    top: 16px;
+    font-family: "Anonymous Pro", monospace;
+    color: white;
+    opacity: 0;
+    animation: opacity 2s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+section div {
+    width: 200px;
+    margin-bottom: 8px;
+}
+
+section div:not(:first-child) p {
+    margin-bottom: 8px;
+}
+
+
+/*Menu*/
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-appearance: none;
+}
+
+.buttons button {
+    border: 0;
+    background: white;
+    font: 48px "Anonymous Pro", monospace;
+    font-weight: 900;
+}
+
+button:hover {
+    cursor: pointer;
+    color: white;
+    background: black;
+}
+
+fieldset {
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 16px;
+    width: 200px
+}
+
+fieldset div {
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    margin-top: 8px;
+    color: white;
+    font: 16px "Anonymous Pro", monospace;
+}
+
+
+/*Game*/
+
+#bounds {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    overflow: hidden;
+    margin: auto;
+    border: 5px solid white;
+    animation: zoomIn 2s ease-in-out;
+}
+
+#bounds * {
+    box-sizing: border-box;
+}
+
+.playerBorders {
+    position: absolute;
+    top: 495px;
+    height: 5px;
+    width: 20px;
+    background: red;
+}
+
+#playerBorderLeft {
+    left: 0px;
+}
+
+#playerBorderRight {
+    right: 0px;
+}
+
+#player1 {
+    position: absolute;
+}
+
+#enemies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: absolute;
+    height: 120px;
+    max-width: 482px;
+}
+
+.enemy {
+    width: 40px;
+    height: 40px;
+}
+
+.deadEnemy {
+    width: 40px;
+    height: 40px;
+}
+
+.bullet {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+}
+
+
+/*Dom manipulator voor de verschillende fases in het spel*/
+
+.inactive {
+    display: none !important;
+}
+
+
+/*Onnodig maar leuk*/
+
+#particles-js {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.animatePlane {
+    position: absolute;
+    top: 600px;
+    left: 380px;
+    animation: animationPlane 9.6s linear;
+}
+
+.animateEnemies {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    position: absolute;
+    top: 0px;
+    left: 160px;
+    height: 120px;
+    width: 480px;
+    animation: animationEnemies 9.6s linear;
+}
+
+.animateEnemy {
+    width: 40px;
+    height: 40px;
+}
+
+.phaseTwoStart {
+    animation: fadeOut 5s linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes animationPlane {
+    0% {
+        transform: scale(2.2);
+        top: 800px;
+    }
+    20% {
+        transform: scale(2.1) translateX(4px);
+        top: 300px;
+    }
+    24% {
+        transform: scale(2.3) translateX(-8px);
+        top: 320px;
+    }
+    32% {
+        transform: scale(2.24) translateX(-3px);
+        top: 400px;
+    }
+    48% {
+        transform: scale(1.5) translateX(-3px);
+        top: 480px;
+    }
+    60% {
+        transform: translateX(5px);
+    }
+    79% {
+        transform: translateX(-2px);
+    }
+    90% {
+        transform: scale(1);
+    }
+}
+
+@keyframes animationEnemies {
+    0% {
+        top: -120px;
+    }
+    32% {
+        top: -120px;
+    }
+    90% {
+        top: 0px;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

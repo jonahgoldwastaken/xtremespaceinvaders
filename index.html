@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Extreme Space Invaders</title>
+    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <section id="status">
+        <div>
+            <h2>Enemies</h2>
+            <p id="enemyCount">0</p>
+        </div>
+        <div>
+            <h2>Lifes</h2>
+            <p id="lifes">0</p>
+        </div>
+    </section>
+    <div id="bounds">
+        <div id="menu" class="inactive">
+            <h1>Extreme Space Invaders</h1>
+            <div class="buttons">
+                <button id="start">PLAY</button>
+                <fieldset id="settings">
+                    <div>
+                        <label for="music">Music</label>
+                        <input type="checkbox" name="music" checked>
+                    </div>
+                    <div>
+                        <label for="sfx">Sound</label>
+                        <input type="checkbox" name="sfx" checked>
+                    </div>
+                    <div>
+                        <label for="volume">Volume (1-10)</label>
+                        <input type="number" name="volume" min="1" max="10" value="6">
+                    </div>
+                    <div>
+                        <label for="difficulty">Difficulty (1-4)</label>
+                        <input type="number" name="difficulty" min="1" max="4" value="2">
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div id="animation" class="inactive">
+            <img id="animateShip" src="img/playerShip.png" alt="Player Ship">
+            <div id="animateEnemies">
+                <img class="animateEnemy" src="img/enemy_3.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_3.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_3.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_3.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_3.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_3.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_3.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_3.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_3.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_3.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_3.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_3.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_2.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_2.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_2.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_2.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_2.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_2.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_2.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_2.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_2.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_2.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_2.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_2.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_1.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_1.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_1.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_1.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_1.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_1.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_1.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_1.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_1.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_1.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_1.png" alt="">
+                <!--
+                --><img class="animateEnemy" src="img/enemy_1.png" alt="">
+            </div>
+        </div>
+        <div id="game" class="inactive">
+            <h1 id="phaseTwoHeading"></h1>
+            <img id="player1" src="img/playerShip.png" alt="">
+            <div class="playerBorders" id="playerBorderLeft"></div>
+            <div class="playerBorders" id="playerBorderRight"></div>
+            <div id="enemies">
+            </div>
+            <div id="enemyBullets"></div>
+        </div>
+        <div id="gameOver">
+            <h1 id="endText"></h1>
+            <div class="buttons">
+                <button id="restart">RESTART</button>
+            </div>
+        </div>
+    </div>
+    <section class="help">
+        <div>
+            <h2>Controls</h2>
+            <p>WASD for movement</p>
+            <p>Spacebar for shooting</p>
+        </div>
+        <div>
+            <h2>Goal</h2>
+            <p>Kill all aliens.</p>
+        </div>
+        <div>
+            <h2>Sprites</h2>
+            <p>Spaceships: <a target=_blank href="http://opengameart.org/content/space-ship-construction-kit">Skorpio</a></p>
+            <p>Lasers: <a target=_blank href="https://opengameart.org/content/bullet-collection-1-m484">Master484</a></p>
+        </div>
+        <div>
+            <h2>Sound info</h2>
+            <p>Song: <a href="https://www.youtube.com/watch?v=8c0M7p49Acs">Notaker - Infinite</a></p>
+            <p>SFX: <a href="https://opengameart.org/content/space-sound-effects">messersm</a></p>
+        </div>
+    </section>
+    <script type="text/javascript" src="js/vars.js"></script>
+    <script type="text/javascript" src="js/objects.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript" src="js/animation.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+</body>
+
+</html>
